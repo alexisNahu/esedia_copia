@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css'
 interface Props { title: string; }
+import ClientRouter from 'astro/components/ClientRouter.astro';
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	<ClientRouter />
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">

@@ -25,7 +25,7 @@ const features = [
     <div class="max-w-7xl mx-auto px-6 text-center">
 
         <div class="mb-16 max-w-2xl mx-auto">
-            <h2 class="text-4xl italic font-medium font-['Cormorant_Garamond'] text-slate-900 mb-4">
+            <h2 class="text-4xl font-medium font-['Cormorant_Garamond'] text-slate-900 mb-4">
                 Momentos a Medida
             </h2>
             <p class="text-slate-500 text-sm leading-relaxed italic">
@@ -38,9 +38,9 @@ const features = [
             {features.map(f => (
                     <div class="flex flex-col items-center group">
 
-                        <div class="relative w-full max-w-[380px] aspect-square rounded-full overflow-hidden
-                                border-[12px] border-white shadow-xl shadow-slate-200/50
-                                transition-transform duration-500 group-hover:scale-105 mb-10">
+                        <div class="relative w-[300px] h-[300px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden
+                                    border-[12px] border-white shadow-xl shadow-slate-200/50
+                                    transition-transform duration-500 group-hover:scale-105 mb-10">
                             <img
                                     src={f.img}
                                     alt={f.alt}
@@ -49,7 +49,9 @@ const features = [
                             <div class="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition"></div>
                         </div>
 
-                        <h3 class="text-3xl italic font-medium font-['Cormorant_Garamond'] text-slate-900 mb-2">
+
+
+                        <h3 class="text-3xl font-medium font-['Cormorant_Garamond'] text-slate-900 mb-2">
                             {f.title}
                         </h3>
 

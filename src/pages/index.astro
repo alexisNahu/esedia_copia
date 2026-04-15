@@ -8,11 +8,12 @@ import ContactBox from '../components/ContactBox.astro'; // "Hablemos de tu even
 import Footer from '../components/Footer.astro';
 import Nav from "../components/Nav.astro";
 import Pricing from "../components/Pricing.astro";
+import Catalogo from "../components/Catalogo.astro";
 
 // Opcional: Podrías definir los links de navegación aquí para pasarlos al Header
 ---
 
-<Layout title="Evella | Invitaciones Digitales Premium">
+<Layout title="Esedia | Invitaciones Digitales Premium">
 
 	<Nav />
 
@@ -23,6 +24,14 @@ import Pricing from "../components/Pricing.astro";
 			<Feature />
 		</section>
 
+		<section id="catalogo">
+			<Catalogo />
+		</section>
+
+		<section id="pricing">
+			<Pricing />
+		</section>
+
 		<section id="disenos" class="bg-white">
 			<NuestrosDisenios />
 		</section>
@@ -30,9 +39,7 @@ import Pricing from "../components/Pricing.astro";
 		<section id="contacto">
 			<ContactBox />
 		</section>
-		<section id="pricing">
-			<Pricing />
-		</section>
+
 	</main>
 
 	<Footer />
