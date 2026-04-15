@@ -1,0 +1,53 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Feature from '../components/Feature.astro'; // "Momentos a Medida"
+import NuestrosDisenios from '../components/NuestrosDisenios.astro'; // El slider con flechas
+import ContactBox from '../components/ContactBox.astro'; // "Hablemos de tu evento"
+import Footer from '../components/Footer.astro';
+import Nav from "../components/Nav.astro";
+import Pricing from "../components/Pricing.astro";
+
+// Opcional: Podrías definir los links de navegación aquí para pasarlos al Header
+---
+
+<Layout title="Evella | Invitaciones Digitales Premium">
+
+	<Nav />
+
+	<main>
+		<Hero />
+
+		<section id="eventos">
+			<Feature />
+		</section>
+
+		<section id="disenos" class="bg-white">
+			<NuestrosDisenios />
+		</section>
+
+		<section id="contacto">
+			<ContactBox />
+		</section>
+
+		<section id="pricing">
+			<Pricing />
+		</section>
+	</main>
+
+	<Footer />
+
+</Layout>
+
+<style is:global>
+	/* Aseguramos un scroll suave al hacer clic en los enlaces de la navegación */
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		/* Color de fondo base muy sutil para que los bloques blancos resalten */
+		background-color: #ffffff;
+	}
+</style>

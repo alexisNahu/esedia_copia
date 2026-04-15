@@ -1,0 +1,80 @@
+---
+// src/components/Features.astro
+
+// Actualizamos los datos para que coincidan con la imagen de referencia
+const features = [
+    {
+        title: 'Bodas',
+        subtitle: 'SOFISTICACIÓN Y ROMANCE',
+        linkText: 'Ver detalles',
+        linkHref: '#bodas', // O la URL que corresponda
+        img: '/images/boda-circular.jpg', // Reemplaza con tu ruta de imagen real
+        alt: 'Manos de novios sosteniendo un ramo de flores'
+    },
+    {
+        title: 'Cumpleaños',
+        subtitle: 'ALEGRÍA Y COLOR',
+        linkText: 'Ver detalles',
+        linkHref: '#cumpleanos', // O la URL que corresponda
+        img: '/images/cumpleanos-circular.jpg', // Reemplaza con tu ruta de imagen real
+        alt: 'Globos grises flotando con destellos'
+    }
+];
+---
+<section class="py-24 bg-[#f8fafc] border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <div class="mb-16 max-w-2xl mx-auto">
+            <h2 class="text-4xl italic font-medium font-['Cormorant_Garamond'] text-slate-900 mb-4">
+                Momentos a Medida
+            </h2>
+            <p class="text-slate-500 text-sm leading-relaxed italic">
+                Diseñamos experiencias digitales para cada tipo de celebración,<br/>
+                manteniendo la esencia de lo clásico.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-start support-grid-cols-2">
+            {features.map(f => (
+                    <div class="flex flex-col items-center group">
+
+                        <div class="relative w-full max-w-[380px] aspect-square rounded-full overflow-hidden
+                                border-[12px] border-white shadow-xl shadow-slate-200/50
+                                transition-transform duration-500 group-hover:scale-105 mb-10">
+                            <img
+                                    src={f.img}
+                                    alt={f.alt}
+                                    class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition duration-500"
+                            />
+                            <div class="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition"></div>
+                        </div>
+
+                        <h3 class="text-3xl italic font-medium font-['Cormorant_Garamond'] text-slate-900 mb-2">
+                            {f.title}
+                        </h3>
+
+                        <p class="text-[11px] font-bold tracking-[0.25em] text-slate-400 uppercase mb-5 font-['Inter']">
+                            {f.subtitle}
+                        </p>
+
+                        <a
+                                href={f.linkHref}
+                                class="text-xs font-semibold text-blue-700/80 hover:text-blue-900 transition underline underline-offset-4 decoration-blue-200 hover:decoration-blue-400 font-['Inter']"
+                        >
+                            {f.linkText}
+                        </a>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Pequeño fix para asegurar que el grid se comporte bien en pantallas medianas si solo hay 2 elementos */
+    @media (min-width: 768px) {
+        .support-grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            justify-items: center;
+        }
+    }
+</style>

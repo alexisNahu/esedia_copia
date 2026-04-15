@@ -1,0 +1,59 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-white border-t border-slate-100 pt-20 pb-10 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+
+            <div class="col-span-1 md:col-span-1">
+                <h2 class="text-3xl font-bold italic mb-4 font-['Cormorant_Garamond']">evella</h2>
+                <p class="text-slate-400 text-xs leading-loose tracking-widest uppercase">
+                    Diseño con amor en San Lorenzo, Paraguay.<br/>
+                    &copy; {currentYear} Todos los derechos reservados.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold tracking-widest text-slate-800 uppercase mb-6">Invitaciones</h4>
+                <ul class="space-y-4 text-sm text-slate-500 italic">
+                    <li><a href="#" class="hover:text-blue-600 transition">Bodas</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Quince Años</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Cumpleaños</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Eventos Corporativos</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold tracking-widest text-slate-800 uppercase mb-6">Empresa</h4>
+                <ul class="space-y-4 text-sm text-slate-500 italic">
+                    <li><a href="#" class="hover:text-blue-600 transition">Sobre Nosotros</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Precios</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Preguntas Frecuentes</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Blog</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold tracking-widest text-slate-800 uppercase mb-6">Contacto</h4>
+                <ul class="space-y-4 text-sm text-slate-500 italic">
+                    <li><a href="mailto:hola@evella.com" class="hover:text-blue-600 transition">hola@evella.com</a></li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        WhatsApp: +595 9XX XXX XXX
+                    </li>
+                    <li>Asunción, Paraguay</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="pt-8 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition text-sm">Instagram</a>
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition text-sm">Pinterest</a>
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition text-sm">Facebook</a>
+            </div>
+            <p class="text-[10px] text-slate-300 uppercase tracking-[0.2em]">Hecho con Astro + Tailwind</p>
+        </div>
+    </div>
+</footer>
