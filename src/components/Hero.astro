@@ -1,36 +1,62 @@
+---
+import { Image } from "astro:assets";
+import { type ImageMetadata } from "astro";
+
+// Cargamos las imágenes
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/hero/item*.png');
+const imagesArray = Object.values(images);
+
+const col1 = [...imagesArray.slice(0, 3), ...imagesArray.slice(0, 3)];
+const col2 = [...imagesArray.slice(3, 6), ...imagesArray.slice(3, 6)];
+---
+
 <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center overflow-hidden">
     <div>
         <span class="text-blue-600 font-semibold tracking-wide text-sm uppercase">Invitaciones Digitales</span>
-        <h1 class="text-6xl md:text-7xl mt-4 leading-[0.85] italic font-['Cormorant_Garamond']">Invitaciones que <br/> <span class="text-blue-900">cuentan tu historia</span></h1>
-        <p class="mt-6 text-slate-600 text-lg max-w-md italic">Diseños exclusivos y personalizados para que tu evento sea inolvidable desde el primer mensaje.</p>
+        <h1 class="text-6xl md:text-7xl mt-4 leading-[0.85] italic font-['Cormorant_Garamond']">
+            Invitaciones que <br/>
+            <span class="text-blue-900">cuentan tu historia</span>
+        </h1>
+        <p class="mt-6 text-slate-600 text-lg max-w-md italic">
+            Diseños exclusivos y personalizados para que tu evento sea inolvidable desde el primer mensaje.
+        </p>
         <div class="mt-10 flex gap-4">
-            <button class="bg-[#1e4b7a] text-white px-8 py-3 rounded-full hover:bg-blue-900 transition shadow-lg shadow-blue-900/20">Comenzar ahora</button>
-            <button class="border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition"><a href="#catalogo">Ver Catálogo</a></button>
+            <button class="bg-[#1e4b7a] text-white px-8 py-3 rounded-full hover:bg-blue-900 transition shadow-lg shadow-blue-900/20">
+                Comenzar ahora
+            </button>
+            <button class="border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition">
+                <a href="#catalogo">Ver Catálogo</a>
+            </button>
         </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 h-[600px] overflow-hidden relative mask-edge">
 
         <div class="flex flex-col gap-4 animate-vertical-scroll">
-            {[1, 2, 3, 4, 1, 2].map((num) => (
-                    <div class={`bg-slate-100 rounded-[2rem] overflow-hidden shadow-lg ${num % 2 === 0 ? 'aspect-square' : 'aspect-[4/5]'}`}>
-                        <img src={`/card${num}.jpg`} alt="Evento" class="w-full h-full object-cover" />
-                    </div>
+            {col1.map((img, i) => (
+                        <Image
+                                src={img()}
+                                alt="Evento"
+                                format="webp"
+                                class="w-full object-cover"
+                        />
             ))}
         </div>
 
-        <div class="flex flex-col gap-4 animate-vertical-scroll-slow pt-12">
-            {[3, 4, 1, 2, 3, 4].map((num) => (
-                    <div class={`bg-slate-100 rounded-[2rem] overflow-hidden shadow-lg ${num % 2 === 0 ? 'aspect-[4/5]' : 'aspect-square'}`}>
-                        <img src={`/card${num}.jpg`} alt="Evento" class="w-full h-full object-cover" />
-                    </div>
+        <div class="flex flex-col gap-4 animate-vertical-scroll">
+            {col2.map((img, i) => (
+                        <Image
+                                src={img()}
+                                alt="Evento"
+                                format="webp"
+                                class="w-full object-cover"
+                        />
             ))}
         </div>
     </div>
 </section>
 
 <style>
-    /* Definición de las animaciones */
     @keyframes scroll {
         0% { transform: translateY(0); }
         100% { transform: translateY(-50%); }
@@ -44,14 +70,13 @@
         animation: scroll 35s linear infinite;
     }
 
-    /* Pausar al pasar el ratón para que el usuario pueda ver bien una invitación */
     .animate-vertical-scroll:hover,
     .animate-vertical-scroll-slow:hover {
         animation-play-state: paused;
     }
 
-    /* Efecto de degradado en los bordes superior e inferior para que las imágenes desaparezcan suavemente */
     .mask-edge {
         mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
     }
 </style>

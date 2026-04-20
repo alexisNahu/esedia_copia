@@ -1,38 +1,51 @@
-    ---
-    const designs = [
-        { title: 'L’Amour Minimaliste', category: 'Boda • Noire', img: '/inv1.jpg' },
-        { title: 'Golden Frame', category: 'Elegancia • Clásico', img: '/inv2.jpg' },
-        { title: 'Modern Abstract', category: 'XV Años • Limpio', img: '/inv3.jpg' },
-        { title: 'Heritage Gold', category: 'Boda • Vintage', img: '/inv4.jpg' },
-        { title: 'Botanical Garden', category: 'Boda • Natural', img: '/inv5.jpg' },
-        { title: 'Navy Royal', category: 'Gala • Ejecutivo', img: '/inv6.jpg' },
-        { title: 'Shadow Play', category: 'Minimal • Dark', img: '/inv7.jpg' },
-        { title: 'Tropical Vibes', category: 'Cumpleaños • Color', img: '/inv8.jpg' },
-    ];
-    ---
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl mb-4">Catálogo Completo</h2>
-            <p class="text-slate-500 max-w-lg mx-auto">Explora nuestra colección de diseños premium. Una amplia variedad para cada estilo y tipo de evento.</p>
-        </div>
+---
+import { Image } from "astro:assets";
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {designs.map(design => (
-                    <div class="group cursor-pointer">
-                        <div class="overflow-hidden rounded-xl bg-slate-100 mb-4 shadow-sm group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
-                            <img
-                                    src={design.img}
-                                    alt={design.title}
-                                    class="w-full aspect-square object-cover grayscale-[20%] group-hover:grayscale-0 transition"
-                            />
-                        </div>
+// 1. Importaciones manuales (Ruta directa)
+import card1 from "../assets/catalogo/card_1.png";
+import card2 from "../assets/catalogo/card_2.png";
+import card3 from "../assets/catalogo/card_3.png";
+import card4 from "../assets/catalogo/card_4.png";
+import card5 from "../assets/catalogo/card_5.png";
+import card6 from "../assets/catalogo/card_6.png";
+import card7 from "../assets/catalogo/card_7.png";
+import card8 from "../assets/catalogo/card_8.png";
+
+const designs = [
+    { title: 'L’Amour Minimaliste', category: 'Boda • Noire', img: card1 },
+    { title: 'Golden Frame', category: 'Elegancia • Clásico', img: card2 },
+    { title: 'Modern Abstract', category: 'XV Años • Limpio', img: card3 },
+    { title: 'Heritage Gold', category: 'Boda • Vintage', img: card4 },
+    { title: 'Botanical Garden', category: 'Boda • Natural', img: card5 },
+    { title: 'Navy Royal', category: 'Gala • Ejecutivo', img: card6 },
+    { title: 'Shadow Play', category: 'Minimal • Dark', img: card7 },
+    { title: 'Tropical Vibes', category: 'Cumpleaños • Color', img: card8 },
+];
+---
+
+<section class="py-24 px-6 max-w-7xl mx-auto" id="catalogo">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl mb-4 font-['Cormorant_Garamond'] italic">Catálogo Completo</h2>
+        <p class="text-slate-500 max-w-lg mx-auto">Explora nuestra colección de diseños premium.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {designs.map((design) => (
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 mb-4 shadow-sm group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300 aspect-square">
+                        <Image
+                                src={design.img}
+                                alt={design.title}
+                                class="w-full h-full object-fill grayscale-[20%] group-hover:grayscale-0 transition duration-500"
+                        />
                     </div>
-            ))}
-        </div>
+                </div>
+        ))}
+    </div>
 
-        <div class="mt-16 text-center">
-            <button class="border border-slate-200 px-10 py-3 rounded-full text-sm font-medium hover:bg-slate-50 transition bg-blue-900 text-white">
-                Cargar más diseños
-            </button>
-        </div>
-    </section>
+    <div class="mt-16 text-center">
+        <button class="border border-slate-200 px-10 py-3 rounded-full text-sm font-medium hover:bg-blue-800 transition bg-blue-900 text-white shadow-lg shadow-blue-900/20">
+            Cargar más diseños
+        </button>
+    </div>
+</section>

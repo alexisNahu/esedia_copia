@@ -1,12 +1,20 @@
 ---
 // src/components/NuestrosDisenios.astro
+import { Image } from "astro:assets";
+
+// Importaciones manuales para evitar errores de undefined
+import inv1 from "../assets/nuestros_disenios/item1.png";
+import inv2 from "../assets/nuestros_disenios/item2.png";
+import inv3 from "../assets/nuestros_disenios/item3.png";
+import inv4 from "../assets/nuestros_disenios/item4.png";
+
 const designs = [
-    { title: "L'Amour Minimaliste", tag: "EDICIÓN BODA", img: "/inv1.jpg" },
-    { title: "Modern Abstract", tag: "EDICIÓN CUMPLEAÑOS", img: "/inv2.jpg" },
-    { title: "Heritage Gold", tag: "EVENTO FORMAL", img: "/inv3.jpg" },
-    { title: "Botanical Garden", tag: "EDICIÓN JARDÍN", img: "/inv4.jpg" },
-    { title: "Navy Royal", tag: "GALA NOCTURNA", img: "/inv5.jpg" },
-    { title: "Minimal Shadow", tag: "EDICIÓN LIMITADA", img: "/inv6.jpg" }
+    { title: "L'Amour Minimaliste", tag: "EDICIÓN BODA", img: inv1 },
+    { title: "Modern Abstract", tag: "EDICIÓN CUMPLEAÑOS", img: inv2 },
+    { title: "Heritage Gold", tag: "EVENTO FORMAL", img: inv3 },
+    { title: "Botanical Garden", tag: "EDICIÓN JARDÍN", img: inv4 },
+    { title: "Navy Royal", tag: "GALA NOCTURNA", img: inv1 }, // Reutilizando para completar 6
+    { title: "Minimal Shadow", tag: "EDICIÓN LIMITADA", img: inv2 }  // Reutilizando para completar 6
 ];
 ---
 <section class="py-20 px-6 max-w-7xl mx-auto overflow-hidden">
@@ -28,28 +36,25 @@ const designs = [
     <div id="sliderContainer" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 scroll-smooth">
         {designs.map(d => (
                 <div class="card-item snap-center group">
-                    <div class="aspect-[3/4] rounded-[3rem] overflow-hidden bg-slate-50 shadow-sm border border-slate-100 mb-6 transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
-                        <img src={d.img} alt={d.title} class="w-full h-full object-cover p-4" loading="lazy" />
+                    <div class="aspect-[3/4] rounded-[3rem] overflow-hidden bg-slate-50 shadow-sm border border-slate-100 mb-6 transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center p-6">
+                        <Image
+                                src={d.img}
+                                alt={d.title}
+                                class="max-w-full max-h-full object-contain"
+                        />
                     </div>
-                    <h3 class="text-2xl italic font-serif text-slate-800 font-['Cormorant_Garamond']">{d.title}</h3>
-                    <p class="text-[10px] tracking-[0.3em] text-slate-400 mt-2 uppercase font-bold">{d.tag}</p>
                 </div>
         ))}
     </div>
 </section>
 
 <style>
-    /* El truco de las 3 columnas exactas */
     .card-item {
-        flex: 0 0 100%; /* En móvil se ve una sola */
+        flex: 0 0 100%;
     }
 
     @media (min-width: 768px) {
         .card-item {
-            /* Cálculo: (100% / 3) menos (el espacio de los gaps dividido entre 3)
-               Como hay 3 cards, hay 2 espacios de gap-8 (32px).
-               (32px * 2) / 3 = 21.33px
-            */
             flex: 0 0 calc(33.333% - 21.33px);
         }
     }
@@ -66,7 +71,6 @@ const designs = [
 
         if (!container || !prevBtn || !nextBtn) return;
 
-        // Ahora el scroll es exactamente el ancho de una card + el gap
         const getScrollAmount = () => {
             const card = container.querySelector('.card-item');
             return card ? card.clientWidth + 32 : 400;
