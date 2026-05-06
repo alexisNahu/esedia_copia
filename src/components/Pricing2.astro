@@ -1,0 +1,326 @@
+---
+const plans = [
+    {
+        type: 'silver',
+        badge: 'Plata',
+        name: 'Plata',
+        price: '200.000',
+        features: [
+            'Maquetación digital predefinida',
+            'URL personalizado',
+            'Datos del evento',
+            'Confirmación de asistencia vía WhatsApp',
+            'Cuenta regresiva',
+            'Ubicación con Google Maps'
+        ]
+    },
+    {
+        type: 'gold',
+        badge: 'Oro',
+        name: 'Oro',
+        price: '350.000',
+        features: [
+            'Maquetación digital personalizada',
+            'URL personalizado',
+            'Datos del evento',
+            'Galería de fotos (hasta 7 imágenes)',
+            'Confirmación de asistencia vía WhatsApp y Google Sheets',
+            'Cuenta regresiva',
+            'Formulario: personaliza tu menú',
+            'Animaciones suaves',
+            'Música de fondo',
+            'Ubicación con Google Maps'
+        ]
+    },
+    {
+        type: 'diamond',
+        badge: 'Diamante',
+        name: 'Diamante',
+        price: '500.000',
+        features: [
+            'Maquetación digital personalizada',
+            'URL personalizado',
+            'Datos del evento',
+            'Galería de fotos (hasta 10 imágenes)',
+            'Botón de WhatsApp',
+            'Cuenta regresiva',
+            'Formulario: personaliza tu menú',
+            'Animaciones suaves',
+            'Música de fondo',
+            'Ubicación con Google Maps',
+            'Confirmación de asistencia vía WhatsApp y Google Sheets',
+            { text: 'Secciones extra (historia, galería, etc.)', exclusive: true },
+            { text: 'Cronograma del evento', exclusive: true },
+            { text: 'Links de lista de regalos', exclusive: true }
+        ]
+    }
+];
+---
+
+<section class="pricing-section">
+    <header>
+        <p class="eyebrow">Invitaciones Digitales de Boda</p>
+        <h1>Nuestros <em>Planes</em></h1>
+        <p class="subtitle">Elige la experiencia perfecta para tu gran día</p>
+    </header>
+
+    <div class="grid">
+        {plans.map((plan) => (
+                <article class={`card ${plan.type}`}>
+                    <span class="badge">{plan.badge}</span>
+                    <h2 class="plan-name">{plan.name}</h2>
+                    <div class="price-wrap">
+                        <span class="currency">Guaraníes</span>
+                        <span class="price">₲ {plan.price}</span>
+                    </div>
+                    <ul class="features">
+                        {plan.features.map((feature) => (
+                                <li>
+              <span class="icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2 7 5.5 10.5 12 3.5"/>
+                </svg>
+              </span>
+                                    {typeof feature === 'string' ? (
+                                        feature
+                                    ) : (
+                                            <>
+                                                {feature.text} <span class="exclusive">exclusivo</span>
+                                            </>
+                                    )}
+                                </li>
+                        ))}
+                    </ul>
+                </article>
+        ))}
+    </div>
+
+    <p class="footer-note">
+        Todos los planes incluyen entrega digital
+        <span></span>
+        Precios en Guaraníes (₲)
+    </p>
+</section>
+
+<style>
+    /* Importación de fuentes */
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+    :root {
+        --cream: #faf7f2;
+        --warm-white: #fff9f4;
+        --ink: #1a1714;
+        --muted: #7a7068;
+        --silver-accent: #b0aaA0;
+        --gold-accent: #c9a96e;
+        --diamond-accent: #8ab4c8;
+        --silver-bg: #f4f2ef;
+        --gold-bg: #fdf8ef;
+        --diamond-bg: #eff5f8;
+        --divider: #e8e2da;
+    }
+
+    .pricing-section {
+        background: var(--cream);
+        font-family: 'Jost', sans-serif;
+        color: var(--ink);
+        padding: 0;
+        margin: 0;
+    }
+
+    header {
+        text-align: center;
+        padding: 72px 24px 48px;
+        position: relative;
+    }
+
+    header::after {
+        content: '';
+        display: block;
+        width: 56px;
+        height: 1px;
+        background: var(--gold-accent);
+        margin: 32px auto 0;
+    }
+
+    .eyebrow {
+        font-weight: 300;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-size: clamp(36px, 6vw, 58px);
+        line-height: 1.1;
+        letter-spacing: 0.01em;
+        color: var(--ink);
+    }
+
+    h1 em {
+        font-style: italic;
+        color: var(--gold-accent);
+    }
+
+    .subtitle {
+        margin-top: 16px;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2px;
+        max-width: 1080px;
+        margin: 56px auto 80px;
+        padding: 0 24px;
+    }
+
+    .card {
+        background: var(--warm-white);
+        padding: 48px 36px 44px;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--divider);
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 48px rgba(0,0,0,0.07);
+        z-index: 1;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+    }
+
+    .card.silver::before { background: var(--silver-accent); }
+    .card.gold::before   { background: linear-gradient(90deg, #c9a96e, #e8c98a, #c9a96e); }
+    .card.diamond::before{ background: linear-gradient(90deg, #6fa8c4, #a8d4e8, #6fa8c4); }
+
+    .badge {
+        display: inline-block;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 2px;
+        margin-bottom: 20px;
+    }
+
+    .silver .badge { background: var(--silver-bg); color: var(--muted); border: 1px solid var(--silver-accent); }
+    .gold .badge   { background: var(--gold-bg);   color: #9a7040; border: 1px solid var(--gold-accent); }
+    .diamond .badge{ background: var(--diamond-bg); color: #3a7a96; border: 1px solid var(--diamond-accent); }
+
+    .plan-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
+        font-size: 32px;
+        letter-spacing: 0.02em;
+        margin-bottom: 8px;
+    }
+
+    .silver  .plan-name { color: var(--muted); }
+    .gold    .plan-name { color: #9a7040; }
+    .diamond .plan-name { color: #3a7a96; }
+
+    .price-wrap {
+        margin: 24px 0 28px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--divider);
+    }
+
+    .currency {
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .price {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 44px;
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+    }
+
+    .features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0;
+    }
+
+    .features li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13.5px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.4;
+    }
+
+    .features li .icon {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin-top: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .silver  .features li .icon { color: var(--silver-accent); }
+    .gold    .features li .icon { color: var(--gold-accent); }
+    .diamond .features li .icon { color: var(--diamond-accent); }
+
+    .exclusive {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--diamond-accent);
+        font-weight: 400;
+        margin-left: 4px;
+        opacity: 0.8;
+    }
+
+    .footer-note {
+        text-align: center;
+        padding: 0 24px 64px;
+        color: var(--muted);
+        font-size: 12.5px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+    }
+
+    .footer-note span {
+        display: inline-block;
+        width: 30px;
+        height: 1px;
+        background: var(--divider);
+        vertical-align: middle;
+        margin: 0 12px;
+    }
+
+    @media (max-width: 600px) {
+        .grid { gap: 16px; }
+        .card { padding: 36px 28px; }
+    }
+</style>
