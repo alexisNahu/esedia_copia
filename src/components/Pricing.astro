@@ -1,30 +1,65 @@
 ---
 const plans = [
-    { name: 'ESENCIAL', price: '29', features: ['Diseño estándar', 'PDF interactivo', 'Confirmación básica'], highlight: false },
-    { name: 'PREMIUM', price: '59', features: ['Audio de bienvenida', 'Confirmación vía WhatsApp', 'Mapa de recepción', 'Cuenta regresiva'], highlight: true },
-    { name: 'EVENTO', price: '99', features: ['Todo lo del Premium', 'Dominio personalizado', 'Soporte prioritario'], highlight: false }
+    { name: 'ESENCIAL', price: '200.000', features: ['Diseño interactivo', 'RSVP Integrado', '6 meses de vigencia'], highlight: false },
+    { name: 'PREMIUM', price: '350.000', features: ['Galería de fotos (20)', 'Cuenta regresiva', 'Playlist personalizada'], highlight: true },
+    { name: 'ETERNO', price: '500.000', features: ['Todo lo de Premium', 'Dominio personalizado', 'Soporte prioritario'], highlight: false }
 ];
 ---
-<section class="bg-slate-50 py-24 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-        <h2 class="text-4xl italic mb-12">Nuestros Planes</h2>
 
-        <div class="grid md:grid-cols-3 gap-8 items-center">
+<section class="bg-white py-24 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-[36px] font-newsreader mb-11">Nuestros Planes</h2>
+
+        <!-- Toggle Switch -->
+        <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-20">
+            <button class="px-8 py-2.5 text-[14px] bg-white text-azul-oscuro font-jakarta font-semibold rounded-full shadow-sm border border-slate-100">
+                Invitación WEB
+            </button>
+            <button class="px-8 py-2.5 text-[14px] text-gris-claro-texto-a font-jakarta font-medium hover:text-azul-oscuro transition-colors">
+                Digital PDF
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 items-stretch">
             {plans.map(plan => (
-                    <div class={`bg-white p-8 rounded-2xl shadow-sm border ${plan.highlight ? 'border-blue-500 ring-2 ring-blue-500/20 scale-105' : 'border-slate-100'}`}>
-                        <h3 class="text-sm font-bold tracking-widest text-slate-400">{plan.name}</h3>
-                        <div class="my-6">
-                            <span class="text-4xl font-bold">${plan.price}</span>
-                            <span class="text-slate-500">/ evento</span>
+                    <div class={`relative flex flex-col p-10 rounded-[3rem] transition-all duration-300 ${
+                        plan.highlight
+                            ? 'bg-white border-[3px] border-azul-oscuro shadow-2xl z-10 scale-105'
+                            : 'bg-slate-50/50 border border-slate-100'
+                    }`}>
+
+                        {plan.highlight && (
+                                <div class="absolute -top-5 left-1/2 font-jakarta -translate-x-1/2 bg-azul-oscuro text-white text-[12px] font-bold tracking-widest py-2 px-8 rounded-[16px] uppercase">
+                                    Recomendado
+                                </div>
+                        )}
+
+                        <div class="text-left mb-8">
+                            <h3 class="text-[14px] font-semibold tracking-widest text-azul-oscuro mb-4 font-jakarta">{plan.name}</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-[30px] font-bold font-jakarta">G {plan.price}</span>
+                                <span class="text-gris-claro-texto-b text-[16px] font-jakarta">/evento</span>
+                            </div>
                         </div>
-                        <ul class="text-left space-y-4 mb-8">
+
+                        <ul class="text-left space-y-5 mb-12 flex-grow">
                             {plan.features.map(f => (
-                                    <li class="flex items-center gap-3 text-sm text-slate-600 italic">
-                                        <span class="text-blue-500">✓</span> {f}
+                                    <li class="flex items-center gap-4 text-[15px] text-slate-600 font-jakarta">
+                                        <div class={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        {f}
                                     </li>
                             ))}
                         </ul>
-                        <button class={`w-full py-3 rounded-full transition ${plan.highlight ? 'bg-[#1e4b7a] text-white hover:bg-blue-900' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}`}>
+
+                        <button class={`w-full py-5 rounded-3xl font-bold text-[16px] font-jakarta transition-all shadow-lg ${
+                            plan.highlight
+                                ? 'bg-azul-oscuro text-white hover:bg-blue-900 shadow-blue-900/20'
+                                : 'bg-celeste-claro text-azul-oscuro hover:bg-blue-200 shadow-blue-200/50'
+                        }`}>
                             Elegir Plan
                         </button>
                     </div>

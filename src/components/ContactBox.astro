@@ -3,23 +3,26 @@ import {Image} from 'astro:assets'
 import mapa from '@/assets/mapa.jpeg'
 // src/components/ContactBox.astro
 ---
-<section class="max-w-7xl mx-auto px-6 py-20">
+<section class="py-20">
     <div class="bg-slate-50 rounded-[3rem] overflow-hidden grid md:grid-cols-2 items-center">
         <div class="p-12 md:p-20">
-            <h2 class="text-5xl font-serif mb-6">
-                Hablemos de <br/> <span class="italic text-blue-700">tu evento</span>
+            <h2 class="text-[48px] font-newsreader leading-[1.2] mb-6">
+                Hablemos de <br/>
+                <span class="italic text-azul-oscuro text-[48px] -mt-2 block">
+        tu evento
+    </span>
             </h2>
-            <p class="text-slate-500 mb-10 leading-relaxed">
+            <p class="text-gris-claro-texto-b text-[16px] mb-10 leading-relaxed">
                 Nuestro equipo está listo para ayudarte a crear la invitación perfecta. Atendemos de forma personalizada para asegurar que cada detalle sea impecable.
             </p>
 
-            <button class="bg-[#1e4b7a] text-white px-8 py-4 rounded-2xl flex items-center gap-3 shadow-lg hover:bg-blue-900 transition mb-8">
-                <span>💬 Escribir por WhatsApp</span>
+            <button class="bg-azul-oscuro text-white px-8 py-4 rounded-[30px] font-jakarta text-[16px] font-bold flex items-center gap-3 shadow-lg hover:bg-blue-900 transition mb-8">
+                <img src="/src/assets/icon-mesaje-whatsapp.png" class="w-[19px]"/>
+                <span>Escribir por WhatsApp</span>
             </button>
 
-            <div class="space-y-3 text-sm text-slate-400">
-                <p class="flex items-center gap-2">✉️ hola@evella.com</p>
-                <p class="flex items-center gap-2">📍 Studio Boutique, Barcelona</p>
+            <div class="space-y-3 text-[14px] font-semibold font-jakarta">
+                <p class="flex items-center gap-2">✉️ hola@esedia.com</p>
             </div>
         </div>
 

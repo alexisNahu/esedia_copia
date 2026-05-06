@@ -17,11 +17,11 @@ const designs = [
     { title: "Minimal Shadow", tag: "EDICIÓN LIMITADA", img: inv2 }  // Reutilizando para completar 6
 ];
 ---
-<section class="py-20 px-6 max-w-7xl mx-auto overflow-hidden">
+<section class="py-20 px-6 overflow-hidden">
     <div class="flex justify-between items-end mb-12">
         <div>
-            <h2 class="text-4xl font-serif mb-2 font-['Cormorant_Garamond']">Nuestros Diseños</h2>
-            <p class="text-slate-400 text-sm italic">Inspiración para tu próximo gran evento.</p>
+            <h2 class="text-[36px] mb-2 font-newsreader">Nuestros Diseños</h2>
+            <p class="text-gris-claro-texto-a text-[16px]">Inspiración para tu próximo gran evento.</p>
         </div>
         <div class="flex gap-3">
             <button id="prevBtn" class="w-12 h-12 border border-slate-200 rounded-full flex items-center justify-center hover:bg-slate-900 hover:text-white transition-all active:scale-95">
@@ -33,15 +33,24 @@ const designs = [
         </div>
     </div>
 
-    <div id="sliderContainer" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 scroll-smooth">
+    <div id="sliderContainer" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 scroll-smooth items-start">
         {designs.map(d => (
                 <div class="card-item snap-center group">
-                    <div class="aspect-[3/4] rounded-[3rem] overflow-hidden bg-slate-50 shadow-sm border border-slate-100 mb-6 transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center p-6">
+                    <!-- Eliminamos aspect-[3/4] y permitimos que h-auto ajuste el alto -->
+                    <div class="w-full h-auto rounded-[2.5rem] overflow-hidden bg-white shadow-sm border border-slate-100 mb-6 transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2 relative">
                         <Image
                                 src={d.img}
                                 alt={d.title}
-                                class="max-w-full max-h-full object-contain"
+                                format="webp"
+                                class="w-full h-auto block"
                         />
+                        <!-- Overlay sutil -->
+                        <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors"></div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-[12px] font-jakarta text-gris-claro-texto-a uppercase tracking-[2px] mb-2">{d.tag}</p>
+                        <h3 class="text-[22px] font-newsreader text-azul-oscuro">{d.title}</h3>
                     </div>
                 </div>
         ))}

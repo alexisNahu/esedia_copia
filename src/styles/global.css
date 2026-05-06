@@ -1,1 +1,78 @@
 @import "tailwindcss";
+
+@theme {
+    /* --- FUENTES PERSONALIZADAS --- */
+    /* Aquí registramos los nombres que usarás en tus clases: font-jakarta, font-opensans, font-newsreader */
+    --font-jakarta: "Plus Jakarta Sans", sans-serif;
+    --font-opensans: "Open Sans", sans-serif;
+    --font-newsreader: "Newsreader", serif;
+
+    /* --- PALETA DE COLORES --- */
+    /* Tailwind v4 genera automáticamente clases como text-azul-oscuro o bg-gris-claro-fondo */
+    --color-gris-claro-fondo: #A6A6A6;
+    --color-gris-claro-texto-b: #5B6063;
+    --color-gris-claro-texto-a: #64748B;
+    --color-azul-oscuro: #2F638F;
+    --color-celeste-claro: #9BCBFD;
+}
+
+@layer base {
+    /* --- DEFINICIÓN DE ARCHIVOS DE FUENTE (NEWSREADER) --- */
+    @font-face {
+        font-family: 'Newsreader';
+        src: url('../assets/fonts/Newsreader/Newsreader-VariableFont_opsz,wght.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Newsreader';
+        src: url('../assets/fonts/Newsreader/Newsreader-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    /* --- DEFINICIÓN DE ARCHIVOS DE FUENTE (OPEN SANS) --- */
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('../assets/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+        font-weight: 300 800;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('../assets/fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+        font-weight: 300 800;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    /* --- DEFINICIÓN DE ARCHIVOS DE FUENTE (PLUS JAKARTA SANS) --- */
+    @font-face {
+        font-family: 'Plus Jakarta Sans';
+        src: url('../assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Plus Jakarta Sans';
+        src: url('../assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    /* --- ESTILOS BASE OPCIONALES --- */
+    body {
+        @apply font-opensans bg-white text-slate-800;
+    }
+
+    .esedia {
+        @apply font-newsreader text-[24px] italic
+    }
+}
+
+
