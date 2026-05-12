@@ -1,4 +1,6 @@
 ---
+import {Image} from 'astro:assets'
+import logo from '@/assets/logo_original.svg'
 const currentYear = new Date().getFullYear();
 ---
 <footer class="bg-[#F9F9F9] border-t border-slate-100 pt-20 pb-20 px-6">
@@ -8,10 +10,16 @@ const currentYear = new Date().getFullYear();
             <!-- Logo y Copyright -->
             <div class="md:col-span-4 flex flex-col justify-between h-full">
                 <!-- El logo se queda arriba -->
-                <h2 class="esedia">esedia</h2>
+                <Image
+                        src={logo}
+                        width={73}
+                        height={36}
+                        alt="esedia logo"
+                        class="-mt-6"
+                />
 
                 <!-- El texto se ancla al fondo -->
-                <p class="text-gris-claro-texto-a text-[12px] uppercase font-jakarta max-w-[374px] mb-2">
+                <p class="text-gris-claro-texto-a text-[12px] uppercase font-jakarta max-w-[374px] mb-1">
                     &copy; {currentYear} ESEDÍA INVITACIONES DIGITALES. <br/>
                     CREADAS PARA MOMENTOS ETERNOS.
                 </p>

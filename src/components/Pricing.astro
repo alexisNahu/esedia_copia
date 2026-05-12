@@ -1,16 +1,64 @@
 ---
 const plans = [
-    { name: 'ESENCIAL', price: '200.000', features: ['Diseño interactivo', 'RSVP Integrado', '6 meses de vigencia'], highlight: false },
-    { name: 'PREMIUM', price: '350.000', features: ['Galería de fotos (20)', 'Cuenta regresiva', 'Playlist personalizada'], highlight: true },
-    { name: 'ETERNO', price: '500.000', features: ['Todo lo de Premium', 'Dominio personalizado', 'Soporte prioritario'], highlight: false }
+    {
+        name: 'PLATA',
+        price: '200.000',
+        features: [
+            'Maquetación digital predefinida',
+            'URL personalizado',
+            'Datos del evento',
+            'Confirmación de asistencia vía WhatsApp',
+            'Cuenta regresiva',
+            'Ubicación con Google Maps'
+        ],
+        highlight: false
+    },
+    {
+        name: 'ORO',
+        price: '350.000',
+        features: [
+            'Maquetación digital personalizada',
+            'URL personalizado',
+            'Datos del evento',
+            'Galería de fotos (hasta 7 imágenes)',
+            'Confirmación de asistencia vía WhatsApp y Google Sheets',
+            'Cuenta regresiva',
+            'Formulario: personaliza tu menú',
+            'Animaciones suaves',
+            'Música de fondo',
+            'Ubicación con Google Maps'
+        ],
+        highlight: true
+    },
+    {
+        name: 'DIAMANTE',
+        price: '500.000',
+        features: [
+            'Maquetación digital personalizada',
+            'URL personalizado',
+            'Datos del evento',
+            'Galería de fotos (hasta 10 imágenes)',
+            'Botón de WhatsApp',
+            'Cuenta regresiva',
+            'Formulario: personaliza tu menú',
+            'Animaciones suaves',
+            'Música de fondo',
+            'Ubicación con Google Maps',
+            'Confirmación de asistencia vía WhatsApp y Google Sheets',
+            { text: 'Secciones extra (historia, etc.)', exclusive: true },
+            { text: 'Cronograma del evento', exclusive: true },
+            { text: 'Links de lista de regalos', exclusive: true }
+        ],
+        highlight: false
+    }
 ];
 ---
 
-<section class="bg-white py-24 px-6">
+<section class="py-24 px-6 bg-gris-claro-fondo-b">
     <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-[36px] font-newsreader mb-11">Nuestros Planes</h2>
+        <h2 class="text-[36px] font-newsreader mb-4">Nuestros Planes</h2>
+        <p class="text-slate-500 font-jakarta mb-11">Elige la experiencia perfecta para tu gran día</p>
 
-        <!-- Toggle Switch -->
         <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-20">
             <button class="px-8 py-2.5 text-[14px] bg-white text-azul-oscuro font-jakarta font-semibold rounded-full shadow-sm border border-slate-100">
                 Invitación WEB
@@ -37,22 +85,40 @@ const plans = [
                         <div class="text-left mb-8">
                             <h3 class="text-[14px] font-semibold tracking-widest text-azul-oscuro mb-4 font-jakarta">{plan.name}</h3>
                             <div class="flex items-baseline gap-1">
-                                <span class="text-[30px] font-bold font-jakarta">G {plan.price}</span>
+                                <span class="text-[30px] font-bold font-jakarta">₲ {plan.price}</span>
                                 <span class="text-gris-claro-texto-b text-[16px] font-jakarta">/evento</span>
                             </div>
                         </div>
 
-                        <ul class="text-left space-y-5 mb-12 flex-grow">
-                            {plan.features.map(f => (
-                                    <li class="flex items-center gap-4 text-[15px] text-slate-600 font-jakarta">
-                                        <div class={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                        {f}
-                                    </li>
-                            ))}
+                        <ul class="text-left space-y-4 mb-12 flex-grow">
+                            {plan.features.map(f => {
+                                // Lógica para poner en negrita "personalizada"
+                                const renderText = (text: string) => {
+                                    if (text.includes('personalizada')) {
+                                        const parts = text.split('personalizada');
+                                        return <>{parts[0]}<span class="font-bold">personalizada</span>{parts[1]}</>;
+                                    }
+                                    return text;
+                                };
+
+                                return (
+                                        <li class="flex items-start gap-4 text-[14px] text-slate-600 font-jakarta leading-tight">
+                                            <div class={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            </div>
+                                            <span>
+                                            {typeof f === 'string' ? renderText(f) : (
+                                                    <>
+                                                        {renderText(f.text)}
+                                                        <span class="text-[10px] font-bold uppercase tracking-wider text-azul-oscuro/60 ml-1 bg-azul-oscuro/5 px-1.5 py-0.5 rounded">Exclusivo</span>
+                                                    </>
+                                            )}
+                                        </span>
+                                        </li>
+                                )
+                            })}
                         </ul>
 
                         <button class={`w-full py-5 rounded-3xl font-bold text-[16px] font-jakarta transition-all shadow-lg ${
@@ -60,10 +126,14 @@ const plans = [
                                 ? 'bg-azul-oscuro text-white hover:bg-blue-900 shadow-blue-900/20'
                                 : 'bg-celeste-claro text-azul-oscuro hover:bg-blue-200 shadow-blue-200/50'
                         }`}>
-                            Elegir Plan
+                            Elegir Plan {plan.name}
                         </button>
                     </div>
             ))}
         </div>
+
+        <p class="mt-16 text-slate-400 font-jakarta text-[13px]">
+            * Todos los planes incluyen entrega digital y soporte técnico básico.
+        </p>
     </div>
 </section>
