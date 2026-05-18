@@ -1,16 +1,19 @@
 ---
 import {Image} from 'astro:assets'
 import mapa from '@/assets/mapa.jpeg'
+import icono_mensaje from '@/assets/icono_mensaje.png'
+import icono_ubicacion from '@/assets/icono_ubicacion.png'
 // src/components/ContactBox.astro
 ---
-<section>
-    <div class="bg-slate-50 rounded-[3rem] overflow-hidden grid md:grid-cols-2 items-center">
+<section class="bg-">
+    <div class="bg-gris-claro-fondo-b rounded-[3rem] overflow-hidden grid md:grid-cols-2 items-center">
+        <!-- Columna de Texto -->
         <div class="p-9">
             <h2 class="text-[48px] font-newsreader leading-[1.2] mb-6">
                 Hablemos de <br/>
                 <span class="italic text-azul-oscuro text-[48px] -mt-2 block">
-        tu evento
-    </span>
+                    tu evento
+                </span>
             </h2>
             <p class="text-gris-claro-texto-b text-[16px] mb-10 leading-relaxed">
                 Nuestro equipo está listo para ayudarte a crear la invitación perfecta. Atendemos de forma personalizada para asegurar que cada detalle sea impecable.
@@ -21,15 +24,19 @@ import mapa from '@/assets/mapa.jpeg'
                 <span>Escribir por WhatsApp</span>
             </button>
 
-            <div class="space-y-3 text-[14px] font-semibold font-jakarta">
-                <p class="flex items-center gap-2">✉️  <span>hola@esedia.com</span></p>
+            <div class="flex flex-row items-center gap-3 font-jakarta text-[14px] font-semibold">
+                <Image src={icono_mensaje} alt="icono mensaje" width="16"/>
+                <span>hola@esedia.com</span>
             </div>
         </div>
 
-        <Image
-            src={mapa}
-            alt="Mapa del evento"
-            class={"w-full h-auto grayscale-[30%]"}
-        />
+        <!-- Columna de la Imagen con Fondo -->
+        <div class="bg-[#DFE3E7] h-full w-full flex items-center justify-center">
+            <Image
+                    src={mapa}
+                    alt="Mapa del evento"
+                    class="w-full h-auto grayscale-[30%] object-cover"
+            />
+        </div>
     </div>
 </section>

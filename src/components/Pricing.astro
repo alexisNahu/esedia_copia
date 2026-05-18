@@ -38,7 +38,6 @@ const plans = [
             'URL personalizado',
             'Datos del evento',
             'Galería de fotos (hasta 10 imágenes)',
-            'Botón de WhatsApp',
             'Cuenta regresiva',
             'Formulario: personaliza tu menú',
             'Animaciones suaves',
@@ -103,18 +102,20 @@ const plans = [
 
                                 return (
                                         <li class="flex items-start gap-4 text-[14px] text-slate-600 font-jakarta leading-tight">
-                                            <div class={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
+                                            <div class={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro font-bold text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
                                             <span>
-                                            {typeof f === 'string' ? renderText(f) : (
-                                                    <>
-                                                        {renderText(f.text)}
-                                                        <span class="text-[10px] font-bold uppercase tracking-wider text-azul-oscuro/60 ml-1 bg-azul-oscuro/5 px-1.5 py-0.5 rounded">Exclusivo</span>
-                                                    </>
-                                            )}
+                                           {typeof f === 'string' ? renderText(f) : (
+                                                   <>
+                                                       {renderText(f.text)}
+                                                       <span class="text-[11px] font-black uppercase tracking-wider text-azul-oscuro ml-2 bg-azul-oscuro/10 px-2 py-0.5 rounded-md">
+                Exclusivo
+            </span>
+                                                   </>
+                                           )}
                                         </span>
                                         </li>
                                 )
