@@ -2,7 +2,7 @@
 import {Image} from 'astro:assets'
 import mapa from '@/assets/mapa.jpeg'
 import icono_mensaje from '@/assets/icono_mensaje.png'
-import icono_ubicacion from '@/assets/icono_ubicacion.png'
+import icono_mensaje_whatsapp from '@/assets/icon-mesaje-whatsapp.png'
 // src/components/ContactBox.astro
 ---
 <section class="bg-">
@@ -20,7 +20,10 @@ import icono_ubicacion from '@/assets/icono_ubicacion.png'
             </p>
 
             <button class="bg-azul-oscuro text-white px-8 py-4 rounded-[30px] font-jakarta text-[16px] font-bold flex items-center gap-3 shadow-lg hover:bg-blue-900 transition mb-8">
-                <img src="/src/assets/icon-mesaje-whatsapp.png" class="w-[19px]"/>
+                <Image
+                        src={icono_mensaje_whatsapp}
+                        alt="Icono mensaje whatsapp"
+                />
                 <span>Escribir por WhatsApp</span>
             </button>
 
