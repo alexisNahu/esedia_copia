@@ -5,24 +5,27 @@ import icono_mensaje from '@/assets/icono_mensaje.png'
 import icono_mensaje_whatsapp from '@/assets/icon-mesaje-whatsapp.png'
 // src/components/ContactBox.astro
 ---
-<section class="bg-">
-    <div class="bg-gris-claro-fondo-b rounded-[3rem] overflow-hidden grid md:grid-cols-2 items-center">
-        <!-- Columna de Texto -->
-        <div class="p-9">
-            <h2 class="text-[48px] font-newsreader leading-[1.2] mb-6">
+<section class="bg-transparent w-full">
+    <div class="bg-gris-claro-fondo-b rounded-none md:rounded-[3rem] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center w-full">
+
+        <div class="p-6 md:p-9 order-1">
+            <h2 class="text-[32px] md:text-[48px] font-newsreader leading-[1.2] mb-4 md:mb-6">
                 Hablemos de <br/>
-                <span class="italic text-azul-oscuro text-[48px] -mt-2 block">
+                <span class="italic text-azul-oscuro text-[32px] md:text-[48px] -mt-1 md:-mt-2 block">
                     tu evento
                 </span>
             </h2>
-            <p class="text-gris-claro-texto-b text-[16px] mb-10 leading-relaxed max-w-[500px] font-jakarta">
+
+            <p class="text-gris-claro-texto-b text-[15px] md:text-[16px] mb-8 md:mb-10 leading-relaxed max-w-[500px] font-jakarta">
                 Nuestro equipo está listo para ayudarte a crear la invitación perfecta. Atendemos de forma personalizada para asegurar que cada detalle sea impecable.
             </p>
 
-            <button class="bg-azul-oscuro text-white px-8 py-4 rounded-[30px] font-jakarta text-[16px] font-bold flex items-center gap-3 shadow-lg hover:bg-blue-900 transition mb-8">
+            <button class="w-full sm:w-auto bg-azul-oscuro text-white px-8 py-4 rounded-[30px] font-jakarta text-[16px] font-bold flex items-center justify-center sm:justify-start gap-3 shadow-lg hover:bg-blue-900 transition mb-8">
                 <Image
                         src={icono_mensaje_whatsapp}
                         alt="Icono mensaje whatsapp"
+                        width="19"
+                        class="h-auto"
                 />
                 <span>Escribir por WhatsApp</span>
             </button>
@@ -33,12 +36,11 @@ import icono_mensaje_whatsapp from '@/assets/icon-mesaje-whatsapp.png'
             </div>
         </div>
 
-        <!-- Columna de la Imagen con Fondo -->
-        <div class="bg-[#DFE3E7] h-full w-full flex items-center justify-center">
+        <div class="bg-[#DFE3E7] h-[250px] md:h-full w-full flex items-center justify-center order-2">
             <Image
                     src={mapa}
                     alt="Mapa del evento"
-                    class="w-full h-auto grayscale-[30%] object-cover"
+                    class="w-full h-full md:h-auto grayscale-[30%] object-cover"
             />
         </div>
     </div>

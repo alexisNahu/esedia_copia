@@ -53,25 +53,30 @@ const plans = [
 ];
 ---
 
-<section class="py-24 px-12 bg-gris-claro-fondo-b">
-    <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-[36px] font-newsreader mb-4">Nuestros Planes</h2>
+<section class="py-16 md:py-24 px-0 md:px-12 bg-gris-claro-fondo-b w-full">
+    <div class="max-w-6xl mx-auto text-center w-full">
+        <h2 class="text-[30px] md:text-[36px] font-newsreader mb-4">Nuestros Planes</h2>
 
-        <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-20">
-            <button class="px-8 py-2.5 text-[14px] bg-white text-azul-oscuro font-jakarta font-semibold rounded-full shadow-sm border border-slate-100">
+        <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-14 md:mb-20">
+            <button class="px-6 md:px-8 py-2.5 text-[14px] bg-white text-azul-oscuro font-jakarta font-semibold rounded-full shadow-sm border border-slate-100">
                 Invitación WEB
             </button>
-            <button class="px-8 py-2.5 text-[14px] text-gris-claro-texto-a font-jakarta font-medium hover:text-azul-oscuro transition-colors">
+            <button class="px-6 md:px-8 py-2.5 text-[14px] text-gris-claro-texto-a font-jakarta font-medium hover:text-azul-oscuro transition-colors">
                 Digital PDF
             </button>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 items-stretch px-4 sm:px-6 md:px-0">
             {plans.map(plan => (
-                    <div class={`relative flex flex-col p-10 rounded-[3rem] transition-all duration-300 ${
+                /* 4. Cambios clave en la tarjeta:
+                   - rounded-none: En móvil va de extremo a extremo sin curvas laterales.
+                   - sm:rounded-[3rem]: Si la pantalla crece un poco (tipo tablet pequeña), activa las curvas.
+                   - md:scale-105: El efecto de agrandado de la destacada solo ocurre en ordenadores.
+                */
+                    <div class={`relative flex flex-col p-8 md:p-10 rounded-none sm:rounded-[3rem] transition-all duration-300 ${
                         plan.highlight
-                            ? 'bg-white border-[3px] border-azul-oscuro shadow-2xl z-10 scale-105'
-                            : 'bg-slate-50/50 border border-slate-100'
+                            ? 'bg-white border-y-[3px] sm:border-[3px] border-azul-oscuro shadow-2xl z-10 md:scale-105'
+                            : 'bg-slate-50/50 border-y sm:border border-slate-100'
                     }`}>
 
                         {plan.highlight && (
@@ -90,7 +95,6 @@ const plans = [
 
                         <ul class="text-left space-y-4 mb-12 flex-grow">
                             {plan.features.map(f => {
-                                // Lógica para poner en negrita "personalizada"
                                 const renderText = (text: string) => {
                                     if (text.includes('personalizada')) {
                                         const parts = text.split('personalizada');
@@ -110,9 +114,9 @@ const plans = [
                                            {typeof f === 'string' ? renderText(f) : (
                                                    <>
                                                        {renderText(f.text)}
-                                                       <span class="text-[11px] font-black uppercase tracking-wider text-azul-oscuro ml-2 bg-azul-oscuro/10 px-2 py-0.5 rounded-md">
-                Exclusivo
-            </span>
+                                                       <span class="text-[11px] font-black uppercase tracking-wider text-azul-oscuro ml-2 bg-azul-oscuro/10 px-2 py-0.5 rounded-md inline-block">
+                                                            Exclusivo
+                                                        </span>
                                                    </>
                                            )}
                                         </span>
@@ -132,7 +136,7 @@ const plans = [
             ))}
         </div>
 
-        <p class="mt-16 text-slate-400 font-jakarta text-[13px]">
+        <p class="mt-16 px-6 text-slate-400 font-jakarta text-[13px]">
             * Todos los planes incluyen entrega digital y soporte técnico básico.
         </p>
     </div>
