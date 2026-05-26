@@ -5,24 +5,27 @@ import logo from '../assets/logo_original.svg'
 
 <nav
         id="navbar"
-        class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 py-2 md:py-3 px-6 md:px-56 flex justify-between items-center border-b border-slate-50 transition-all duration-300"
+        class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 py-2 md:py-3 border-b border-slate-50 transition-all duration-300"
 >
-    <div class="flex justify-between md:justify-start items-center gap-x-10 w-full md:w-auto">
-        <Image
-                src={logo}
-                width={73}
-                height={36}
-                alt="esedia logo"
-                class="w-[55px] md:w-[65px] h-auto mt-[10px]"
-        />
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-start w-full">
 
-        {/* Los links se mantienen alineados al centro gracias al items-center del padre */}
-        <div class="hidden md:flex gap-8 text-[14px] font-jakarta text-gris-claro-texto-a">
-            <a href="#eventos" class="hover:text-blue-600 transition">Servicios</a>
-            <a href="#precios" class="hover:text-blue-600 transition">Precios</a>
-            <a href="#catalogo" class="hover:text-blue-600 transition">Catálogo</a>
-            <a href="#contacto" class="hover:text-blue-600 transition">Contacto</a>
+        <div class="flex items-center gap-x-10">
+            <Image
+                    src={logo}
+                    width={73}
+                    height={36}
+                    alt="esedia logo"
+                    class="w-[55px] md:w-[65px] h-auto mt-[2px]"
+            />
+
+            <div class="hidden md:flex gap-8 text-[14px] font-jakarta text-gris-claro-texto-a">
+                <a href="#eventos" class="hover:text-blue-600 transition">Servicios</a>
+                <a href="#precios" class="hover:text-blue-600 transition">Precios</a>
+                <a href="#catalogo" class="hover:text-blue-600 transition">Catálogo</a>
+                <a href="#contacto" class="hover:text-blue-600 transition">Contacto</a>
+            </div>
         </div>
+
     </div>
 </nav>
 

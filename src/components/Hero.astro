@@ -10,57 +10,60 @@ const col1 = [...imagesArray.slice(0, 3), ...imagesArray.slice(0, 3)];
 const col2 = [...imagesArray.slice(3, 6), ...imagesArray.slice(3, 6)];
 ---
 
-<section class="mx-auto px-6 md:px-56 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden bg-gris-claro-fondo-b">
+<section class="py-16 overflow-hidden bg-gris-claro-fondo-b w-full">
 
-    <div class="text-center md:text-left flex flex-col items-center md:items-start order-1 mt-32">
-        <span class="text-[#00436D] text-[11px] md:text-[12px] font-jakarta py-[6px] px-[16px] rounded-[20px] bg-celeste-claro font-semibold uppercase">Elegancia Digital</span>
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-        <h1 class="text-[36px] md:text-[72px] font-newsreader leading-tight md:leading-[1.2] mt-6 md:mt-9">
-            Invitaciones que <br class="hidden md:inline"/>
-            <span class="font-newsreader italic text-azul-oscuro md:-mt-4 block">
-                cuentan tu historia
-            </span>
-        </h1>
+        <div class="text-center md:text-left flex flex-col items-center md:items-start order-1 mt-20 md:mt-32">
+            <span class="text-[#00436D] text-[11px] md:text-[12px] font-jakarta py-[6px] px-[16px] rounded-[20px] bg-celeste-claro font-semibold uppercase">Elegancia Digital</span>
 
-        <p class="mt-4 md:mt-6 text-[15px] md:text-[18px] font-jakarta text-gris-claro-texto-b w-full max-w-lg">
-            Transformamos la tradición del papel en una experiencia
-            digital sofisticada. Diseños exclusivos para momentos
-            inolvidables.
-        </p>
+            <h1 class="text-[36px] md:text-[72px] font-newsreader leading-tight md:leading-[1.2] mt-6 md:mt-9">
+                Invitaciones que <br class="hidden md:inline"/>
+                <span class="font-newsreader italic text-azul-oscuro md:-mt-4 block">
+                    cuentan tu historia
+                </span>
+            </h1>
 
-        <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button class="bg-azul-oscuro text-white px-8 py-3 rounded-full hover:bg-blue-900 transition shadow-lg shadow-blue-900/20 w-full sm:w-auto text-[15px] md:text-[16px]">
-                Comenzar ahora
-            </button>
-            <button class="border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition w-full sm:w-auto text-[15px] md:text-[16px]">
-                <a href="#catalogo" class="block w-full">Ver Catálogo</a>
-            </button>
-        </div>
-    </div>
+            <p class="mt-4 md:mt-6 text-[15px] md:text-[18px] font-jakarta text-gris-claro-texto-b w-full max-w-lg">
+                Transformamos la tradición del papel en una experiencia
+                digital sofisticada. Diseños exclusivos para momentos
+                inolvidables.
+            </p>
 
-    <div class="grid grid-cols-2 gap-4 h-[350px] md:h-[600px] overflow-hidden relative mask-edge order-2 mt-12 md:mt-32">
-
-        <div class="flex flex-col gap-4 animate-vertical-scroll">
-            {col1.map((img, i) => (
-                    <Image
-                            src={img()}
-                            alt="Evento"
-                            format="webp"
-                            class="w-full object-cover"
-                    />
-            ))}
+            <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <button class="bg-azul-oscuro text-white px-8 py-3 rounded-full hover:bg-blue-900 transition shadow-lg shadow-blue-900/20 w-full sm:w-auto text-[15px] md:text-[16px]">
+                    Comenzar ahora
+                </button>
+                <button class="border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition w-full sm:w-auto text-[15px] md:text-[16px]">
+                    <a href="#catalogo" class="block w-full">Ver Catálogo</a>
+                </button>
+            </div>
         </div>
 
-        <div class="flex flex-col gap-4 animate-vertical-scroll">
-            {col2.map((img, i) => (
-                    <Image
-                            src={img()}
-                            alt="Evento"
-                            format="webp"
-                            class="w-full object-cover"
-                    />
-            ))}
+        <div class="grid grid-cols-2 gap-4 h-[350px] md:h-[600px] overflow-hidden relative mask-edge order-2 mt-12 md:mt-32">
+            <div class="flex flex-col gap-4 animate-vertical-scroll">
+                {col1.map((img, i) => (
+                        <Image
+                                src={img()}
+                                alt="Evento"
+                                format="webp"
+                                class="w-full object-cover"
+                        />
+                ))}
+            </div>
+
+            <div class="flex flex-col gap-4 animate-vertical-scroll">
+                {col2.map((img, i) => (
+                        <Image
+                                src={img()}
+                                alt="Evento"
+                                format="webp"
+                                class="w-full object-cover"
+                        />
+                ))}
+            </div>
         </div>
+
     </div>
 </section>
 
