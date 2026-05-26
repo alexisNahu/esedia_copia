@@ -3,34 +3,30 @@ import {Image} from 'astro:assets'
 import logo from '@/assets/logo_original.svg'
 const currentYear = new Date().getFullYear();
 ---
-<footer class="bg-[#F9F9F9] border-t border-slate-100 pt-20 pb-20 px-64 mt-36">
-    <div>
+<footer class="bg-[#F9F9F9] border-t border-slate-100 pt-20 pb-20 mt-36">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
 
-            <!-- Logo y Copyright -->
-            <div class="md:col-span-4 flex flex-col h-full justify-center">
-                <!-- El logo se queda arriba -->
+            <div class="md:col-span-4 flex flex-col h-full justify-between gap-6">
                 <Image
                         src={logo}
                         width={73}
                         height={36}
                         alt="esedia logo"
-                        class="-mt-6"
+                        class="w-[73px] h-auto"
                 />
 
-                <!-- El texto se ancla al fondo -->
-                <p class="text-gris-claro-texto-a text-[12px] uppercase font-jakarta max-w-[374px] mb-1">
+                <p class="text-gris-claro-texto-a text-[12px] uppercase font-jakarta max-w-[374px]">
                     &copy; {currentYear} ESEDÍA INVITACIONES DIGITALES. <br/>
                     CREADAS PARA MOMENTOS ETERNOS.
                 </p>
             </div>
 
-            <!-- Sección Navegación (Doble Columna) -->
             <div class="md:col-span-5">
-                <h4 class="text-[12px] font-bold uppercase mb-6 font-jakarta">Navegación</h4>
+                <h4 class="text-[12px] font-bold uppercase mb-6 font-jakarta tracking-[0.1em]">Navegación</h4>
 
                 <div class="grid grid-cols-2 font-jakarta text-[12px]">
-                    <ul class="space-y-6">
+                    <ul class="space-y-4">
                         <li>
                             <a href="#" class="text-[12px] text-gris-claro-texto-a font-jakarta uppercase tracking-[0.1em] hover:text-azul-oscuro transition">Servicios</a>
                         </li>
@@ -38,7 +34,7 @@ const currentYear = new Date().getFullYear();
                             <a href="#" class="text-[12px] text-gris-claro-texto-a font-jakarta uppercase tracking-[0.1em] hover:text-azul-oscuro transition">Catálogo</a>
                         </li>
                     </ul>
-                    <ul class="space-y-6">
+                    <ul class="space-y-4">
                         <li>
                             <a href="#" class="text-[12px] text-gris-claro-texto-a font-jakarta uppercase tracking-[0.1em] hover:text-azul-oscuro transition">Precios</a>
                         </li>
@@ -49,13 +45,12 @@ const currentYear = new Date().getFullYear();
                 </div>
             </div>
 
-            <!-- Sección Conectar -->
             <div class="md:col-span-3">
-                <h4 class="text-[12px] font-bold uppercase mb-4 font-jakarta">Conectar</h4>
-                <ul class="text-[12px] text-gris-claro-texto-a font-jakarta tracking-[0.1em] hover:text-azul-oscuro transition">
-                    <li class="mb-2 ">hola@esedia.com</li>
-                    <li class="mb-2">Whatsapp: +595 973 327128</li>
-                    <li class="mb-2">Capiatá, Paraguay</li>
+                <h4 class="text-[12px] font-bold uppercase mb-6 font-jakarta tracking-[0.1em]">Conectar</h4>
+                <ul class="text-[12px] text-gris-claro-texto-a font-jakarta tracking-[0.1em] space-y-3">
+                    <li class="hover:text-azul-oscuro transition cursor-pointer">hola@esedia.com</li>
+                    <li class="hover:text-azul-oscuro transition cursor-pointer">Whatsapp: +595 973 327128</li>
+                    <li>Capiatá, Paraguay</li>
                 </ul>
             </div>
 
