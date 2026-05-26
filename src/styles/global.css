@@ -75,6 +75,10 @@
     .esedia {
         @apply font-newsreader text-[24px] italic
     }
+
+    .marg {
+        @apply max-w-[1400px]
+    }
 }
 
 
