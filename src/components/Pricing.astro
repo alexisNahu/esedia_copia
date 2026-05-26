@@ -53,7 +53,7 @@ const plans = [
 ];
 ---
 
-<section class="py-16 md:py-24 px-0 md:px-12 bg-gris-claro-fondo-b w-full">
+<section class="py-16 md:py-24 px-0 bg-gris-claro-fondo-b w-full">
     <div class="max-w-6xl mx-auto text-center w-full">
         <h2 class="text-[30px] md:text-[36px] font-newsreader mb-4">Nuestros Planes</h2>
 
@@ -93,7 +93,7 @@ const plans = [
                             </div>
                         </div>
 
-                        <ul class="text-left space-y-4 mb-12 flex-grow">
+                        <ul class="text-left space-y-[10px] mb-10 flex-grow"> {/* <- CAMBIO: Se redujo space-y-4 a space-y-2.5 y el mb-12 a mb-10 */}
                             {plan.features.map(f => {
                                 const renderText = (text: string) => {
                                     if (text.includes('personalizada')) {
@@ -104,22 +104,24 @@ const plans = [
                                 };
 
                                 return (
-                                        <li class="flex items-start gap-4 text-[14px] text-slate-600 font-jakarta leading-tight">
+                                    /* CAMBIO: Se optimizó el leading a snug para que se vea más compacto */
+                                        <li class="flex items-start gap-4 text-[14px] text-slate-600 font-jakarta leading-snug">
+                                            {/* CAMBIO: mt-0.5 ajusta el check verticalmente para que quede alineado con el texto compacto */}
                                             <div class={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro font-bold text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
                                             <span>
-                                           {typeof f === 'string' ? renderText(f) : (
-                                                   <>
-                                                       {renderText(f.text)}
-                                                       <span class="text-[11px] font-black uppercase tracking-wider text-azul-oscuro ml-2 bg-azul-oscuro/10 px-2 py-0.5 rounded-md inline-block">
-                                                            Exclusivo
-                                                        </span>
-                                                   </>
-                                           )}
-                                        </span>
+                   {typeof f === 'string' ? renderText(f) : (
+                           <>
+                               {renderText(f.text)}
+                               <span class="text-[11px] font-black uppercase tracking-wider text-azul-oscuro ml-2 bg-azul-oscuro/10 px-2 py-0.5 rounded-md inline-block">
+                                    Exclusivo
+                                </span>
+                           </>
+                   )}
+                </span>
                                         </li>
                                 )
                             })}

@@ -2,7 +2,7 @@
 // src/components/NuestrosDisenios.astro
 import { Image } from "astro:assets";
 
-// Importaciones manuales para evitar errores de undefined
+// Importaciones manuales
 import inv1 from "../assets/nuestros_disenios/item1.png";
 import inv2 from "../assets/nuestros_disenios/item2.png";
 import inv3 from "../assets/nuestros_disenios/item3.png";
@@ -13,8 +13,8 @@ const designs = [
     { title: "Modern Abstract", tag: "EDICIÓN CUMPLEAÑOS", img: inv2 },
     { title: "Heritage Gold", tag: "EVENTO FORMAL", img: inv3 },
     { title: "Botanical Garden", tag: "EDICIÓN JARDÍN", img: inv4 },
-    { title: "Navy Royal", tag: "GALA NOCTURNA", img: inv1 }, // Reutilizando para completar 6
-    { title: "Minimal Shadow", tag: "EDICIÓN LIMITADA", img: inv2 }  // Reutilizando para completar 6
+    { title: "Navy Royal", tag: "GALA NOCTURNA", img: inv1 },
+    { title: "Minimal Shadow", tag: "EDICIÓN LIMITADA", img: inv2 }
 ];
 ---
 <section class="py-20 px-12 overflow-hidden mt-24">
@@ -33,31 +33,18 @@ const designs = [
         </div>
     </div>
 
-    <!--
-      CAMBIO CLAVE:
-      Se añadió "pt-12" para dar espacio al levantamiento (-translate-y-3)
-      y se ajustó "pb-8" para compensar el sombreado inferior.
-    -->
+    {/* Contenedor principal con padding superior e inferior para que el hover no se corte */}
     <div id="sliderContainer" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-12 pb-12 scroll-smooth items-start">
         {designs.map(d => (
                 <div class="card-item snap-center group">
-                    <div class="w-full h-auto rounded-[2.5rem] overflow-hidden bg-white mb-6 transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.1)] group-hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] group-hover:-translate-y-3 relative border border-slate-50">
+                    <div class="rounded-[2.5rem] overflow-hidden bg-transparent mb-6 transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.08)] group-hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] group-hover:-translate-y-3 relative">
                         <Image
                                 src={d.img}
                                 alt={d.title}
-                                width={400}
-                                height={600}
                                 format="webp"
-                                class="w-full h-auto block"
+                                class="w-full h-auto object-contain block"
                         />
-                        <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors"></div>
-                    </div>
-
-                    <div class="text-left px-4">
-                        <h3 class="text-[24px] font-newsreader leading-tight text-slate-800">{d.title}</h3>
-                        <p class="text-[12px] font-jakarta uppercase text-gris-claro-texto-b -mt-1 font-semibold tracking-[1.2px]">
-                            {d.tag}
-                        </p>
+                        <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors pointer-events-none"></div>
                     </div>
                 </div>
         ))}
@@ -66,12 +53,21 @@ const designs = [
 
 <style>
     .card-item {
-        flex: 0 0 100%;
+        /* En móviles se muestra casi una tarjeta completa */
+        flex: 0 0 85%;
     }
 
-    @media (min-width: 768px) {
+    /* En pantallas medianas (tabletas) mostramos 2 tarjetas */
+    @media (min-width: 640px) {
         .card-item {
-            flex: 0 0 calc(33.333% - 21.33px);
+            flex: 0 0 calc(50% - 16px);
+        }
+    }
+
+    /* En pantallas grandes (Escritorio) mostramos exactamente las 4 tarjetas como en tu imagen */
+    @media (min-width: 1024px) {
+        .card-item {
+            flex: 0 0 calc(25% - 24px);
         }
     }
 
@@ -89,7 +85,7 @@ const designs = [
 
         const getScrollAmount = () => {
             const card = container.querySelector('.card-item');
-            return card ? card.clientWidth + 32 : 400;
+            return card ? card.clientWidth + 32 : 400; // 32 es el gap-8
         };
 
         nextBtn.addEventListener('click', () => {
