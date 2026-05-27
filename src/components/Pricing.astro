@@ -53,11 +53,11 @@ const plans = [
 ];
 ---
 
-<section class="py-16 md:py-24 px-0 bg-gris-claro-fondo-b w-full">
-    <div class="marg mx-auto text-center w-full">
+<section class="py-12 md:py-20 px-0 bg-gris-claro-fondo-b w-full">
+    <div class="max-w-[1300px] mx-auto text-center w-full">
         <h2 class="text-[30px] md:text-[36px] font-newsreader mb-4">Nuestros Planes</h2>
 
-        <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-14 md:mb-20">
+        <div class="inline-flex p-1 bg-slate-50 rounded-full border border-slate-100 mb-10 md:mb-14">
             <button class="px-6 md:px-8 py-2.5 text-[14px] bg-white text-azul-oscuro font-jakarta font-semibold rounded-full shadow-sm border border-slate-100">
                 Invitación WEB
             </button>
@@ -66,14 +66,12 @@ const plans = [
             </button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 items-stretch px-4 sm:px-6 md:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-stretch px-4 sm:px-6 md:px-0">
             {plans.map(plan => (
-                /* 4. Cambios clave en la tarjeta:
-                   - rounded-none: En móvil va de extremo a extremo sin curvas laterales.
-                   - sm:rounded-[3rem]: Si la pantalla crece un poco (tipo tablet pequeña), activa las curvas.
-                   - md:scale-105: El efecto de agrandado de la destacada solo ocurre en ordenadores.
+                /* AJUSTE: Se amplió el padding interno de las tarjetas de "px-8 py-6 md:px-8 md:py-6"
+                  a "p-8 md:p-9". Esto les da más altura y un aspecto más robusto.
                 */
-                    <div class={`relative flex flex-col p-8 md:p-10 rounded-none sm:rounded-[3rem] transition-all duration-300 ${
+                    <div class={`relative flex flex-col p-8 md:p-9 rounded-none sm:rounded-[45px] transition-all duration-300 ${
                         plan.highlight
                             ? 'bg-white border-y-[3px] sm:border-[3px] border-azul-oscuro shadow-2xl z-10 md:scale-105'
                             : 'bg-slate-50/50 border-y sm:border border-slate-100'
@@ -85,15 +83,15 @@ const plans = [
                                 </div>
                         )}
 
-                        <div class="text-left mb-8">
-                            <h3 class="text-[14px] font-semibold tracking-widest text-azul-oscuro mb-4 font-jakarta">{plan.name}</h3>
+                        <div class="text-left mb-7">
+                            <h3 class="text-[14px] font-semibold tracking-widest text-azul-oscuro mb-3 font-jakarta">{plan.name}</h3>
                             <div class="flex items-baseline gap-1">
                                 <span class="text-[30px] font-bold font-jakarta">₲ {plan.price}</span>
                                 <span class="text-gris-claro-texto-b text-[16px] font-jakarta">/evento</span>
                             </div>
                         </div>
 
-                        <ul class="text-left space-y-[10px] mb-10 flex-grow"> {/* <- CAMBIO: Se redujo space-y-4 a space-y-2.5 y el mb-12 a mb-10 */}
+                        <ul class="text-left space-y-[2px] mb-8 flex-grow">
                             {plan.features.map(f => {
                                 const renderText = (text: string) => {
                                     if (text.includes('personalizada')) {
@@ -104,9 +102,7 @@ const plans = [
                                 };
 
                                 return (
-                                    /* CAMBIO: Se optimizó el leading a snug para que se vea más compacto */
                                         <li class="flex items-start gap-4 text-[14px] text-slate-600 font-jakarta leading-snug">
-                                            {/* CAMBIO: mt-0.5 ajusta el check verticalmente para que quede alineado con el texto compacto */}
                                             <div class={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${plan.highlight ? 'border-azul-oscuro font-bold text-azul-oscuro' : 'border-azul-oscuro/40 text-azul-oscuro/60'}`}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -127,7 +123,7 @@ const plans = [
                             })}
                         </ul>
 
-                        <button class={`w-full py-5 rounded-3xl font-bold text-[16px] font-jakarta transition-all shadow-lg ${
+                        <button class={`w-full py-4.5 rounded-3xl font-bold text-[16px] font-jakarta transition-all shadow-lg ${
                             plan.highlight
                                 ? 'bg-azul-oscuro text-white hover:bg-blue-900 shadow-blue-900/20'
                                 : 'bg-celeste-claro text-azul-oscuro hover:bg-blue-200 shadow-blue-200/50'
@@ -138,7 +134,7 @@ const plans = [
             ))}
         </div>
 
-        <p class="mt-16 px-6 text-slate-400 font-jakarta text-[13px]">
+        <p class="mt-14 px-6 text-slate-400 font-jakarta text-[13px]">
             * Todos los planes incluyen entrega digital y soporte técnico básico.
         </p>
     </div>
